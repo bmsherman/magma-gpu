@@ -1,5 +1,5 @@
-magma
-======
+magma-gpu
+=========
 
 This Haskell library provides FFI bindings for some of the functions
 provided by the MAGMA GPU library. Template Haskell and language-c 
@@ -14,9 +14,9 @@ be performed. Its instances are `CFloat`, `CDouble`, `Complex CFloat`, and
 `Complex CDouble`. The `Magma1` typeclass involves functions that have both
 real and complex types, and so it has `CFloat` and `CDouble` as instances.
 
-Use the Haddocs to see what functions are available! They're not very
-organized right now, but I hope to improve them in the future.
+### Documentation
 
+[See the Haddock documentation](http://bmsherman.github.io/haddock/magma-gpu/).
 
 Installation
 ------------
