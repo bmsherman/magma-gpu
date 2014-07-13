@@ -34,7 +34,7 @@ import qualified Text.Parsec as P
 import Foreign.CUDA as FC
 import qualified Foreign.CUDA.Runtime.Stream as FC
 
-import Foreign.CUDA.Cublas.Types (FillMode (..))
+import Foreign.CUDA.Magma.Types
 
 try :: [(Bool, a)] -> a
 try ((p,y):conds) = if p then y else try conds
@@ -78,9 +78,12 @@ typeDat IntC        = prim [t| C.CInt |]    [t| Int |]    [| fromIntegral |]    
 typeDat CharC       = prim [t| C.CChar |]    [t| Char |]   [| C.castCCharToChar |]       [| C.castCharToCChar |]
 typeDat FloatC      = simple [t| C.CFloat |]
 typeDat DoubleC     = simple [t| C.CDouble |]
-typeDat (EnumC str) = prim [t| C.CInt |] x [| toEnum . fromIntegral |] [| fromIntegral . fromEnum |] where
+typeDat (EnumC str) = simple x where
   x = case str of
-    _ -> error ("typeDat.EnumC : Missing type: " ++ str)
+     "magma_uplo_t" -> [t| UpLoT |]
+     "magma_trans_t" -> [t| TransT |]
+     "magma_vec_t" -> [t| VecT |]
+     _ -> error ("typeDat.EnumC : Missing type: " ++ str)
 typeDat (ArbStructC str) = error "typeDat.ArbstructC"
 typeDat (ComplexC t) = prim
   [t| Complex $(ctype) |]
@@ -306,7 +309,7 @@ type CFunction = ( String , TypeC , [CVar] )
 
 getFunctions :: FilePath -> IO [CFunction]
 getFunctions fp = do
-  Right (CTranslUnit xs _) <- parseCFile (newGCC "/usr/bin/gcc") Nothing ["-DHAVE_CUBLAS"] fp
+  Right (CTranslUnit xs _) <- parseCFile (newGCC "/usr/bin/gcc") Nothing ["-DHAVE_CUBLAS", "-I" ++ CUDA_INCLUDE_DIR] fp
   return $ mapMaybe (maybeExternalDec >=> maybeFunction) xs
 
 createf :: FilePath -> CFunction -> Q Dec

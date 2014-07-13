@@ -10,7 +10,7 @@ copyright:              Copyright (c) [2012..2014]. Trevor L. McDonell <tmcdonel
 category:               Foreign
 cabal-version:          >=1.8
 
-build-type:             Configure
+build-type:             Custom
 Extra-tmp-files:        magma.buildinfo config.status config.log
 Extra-source-files:     configure
                         configure.ac
@@ -20,7 +20,8 @@ Extra-source-files:     configure
                         magma.buildinfo.in
 
 library
-  exposed-modules:      Foreign.CUDA.Magma
+  exposed-modules:      Foreign.CUDA.Magma,
+                        Foreign.CUDA.Magma.Types
 
   --other-modules:        Foreign.CUDA.Magma.Internal.C2HS
   other-modules:        Foreign.CUDA.Magma.TH

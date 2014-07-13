@@ -5,6 +5,7 @@
 module Foreign.CUDA.Magma where
 
 import Foreign.CUDA.Magma.TH
+import Foreign.CUDA.Magma.Types
 import Foreign.C.Types
 
 foreign import ccall safe "static /usr/local/magma/include/magma.h magma_init"

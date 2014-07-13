@@ -6,4 +6,4 @@ x-extra-c2hs-options: @cuda_c2hsflags@ -C '-DHAVE_CUBLAS'
 include-dirs: @magma_dir@
 extra-lib-dirs: @magma_lib_dir@
 
-cpp-options: -DMAGMA_INCLUDE_DIR="@magma_dir@"
+cpp-options: -DMAGMA_INCLUDE_DIR="@magma_dir@" -DCUDA_INCLUDE_DIR="@cuda_dir@"
