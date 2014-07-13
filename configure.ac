@@ -38,7 +38,7 @@ LDFLAGS+=" -L${magma_lib_dir} "
 AC_CHECK_HEADERS([cublas_v2.h],              [], [AC_MSG_ERROR(could not find CUBLAS headers${longerror})])
 #AC_CHECK_HEADERS([magma.h],                  [], [AC_MSG_ERROR(could not find MAGMA headers)])
 #It is a problem that Autoconf can't find the magma headers!!!!
-AC_SEARCH_LIBS(magma_num_gpus  , magma ,     [magma_dir], [AC_MSG_ERROR(could not find MAGMA library)])
+AC_SEARCH_LIBS(magma_num_gpus  , magma ,     [], [AC_MSG_ERROR(could not find MAGMA library)])
 
 # Populate the buildinfo, with the search paths and any target specific options
 #
