@@ -31,8 +31,7 @@ MAGMA directories hard-coded in `configure.ac`, so those may need to be
 changed based on where MAGMA has been installed.
 
 Currently, the [cublas](https://github.com/bmsherman/cublas) is required
-as a dependency, but it's needed in a very trivial way. That package is
-not currently on Hackage, so you'll need to install that first.
+as a dependency, but it's needed in a very trivial way.
 
 In the base directory, prepare a configure script by running
 ```shell
