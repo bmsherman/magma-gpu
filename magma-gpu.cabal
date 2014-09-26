@@ -1,5 +1,5 @@
 name:                   magma-gpu
-version:                0.1.0.0
+version:                0.1.1.0
 synopsis:               FFI bindings to the MAGMA GPU library
 --description:          
 license:                BSD3

@@ -1,7 +1,7 @@
 ghc-options: -optc@cuda_cppflags@ -DHAVE_CUBLAS
 cc-options: @cuda_cppflags@ -DHAVE_CUBLAS
 ld-options: @cuda_ldflags@
-x-extra-c2hs-options: @cuda_c2hsflags@ -C '-DHAVE_CUBLAS'
+x-extra-c2hs-options: @cuda_c2hsflags@
 
 include-dirs: @magma_dir@
 extra-lib-dirs: @magma_lib_dir@

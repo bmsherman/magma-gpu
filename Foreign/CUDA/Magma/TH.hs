@@ -78,7 +78,7 @@ typeDat IntC        = prim [t| C.CInt |]    [t| Int |]    [| fromIntegral |]    
 typeDat CharC       = prim [t| C.CChar |]    [t| Char |]   [| C.castCCharToChar |]       [| C.castCharToCChar |]
 typeDat FloatC      = simple [t| C.CFloat |]
 typeDat DoubleC     = simple [t| C.CDouble |]
-typeDat (EnumC str) = simple x where
+typeDat (EnumC str) = prim [t| C.CInt |] x [| toEnum . fromIntegral |] [| fromIntegral . fromEnum |] where
   x = case str of
      "magma_uplo_t" -> [t| UpLoT |]
      "magma_trans_t" -> [t| TransT |]
